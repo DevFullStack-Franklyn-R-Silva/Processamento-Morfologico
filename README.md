@@ -12,6 +12,8 @@
 O objetivo principal do trabalho é avaliar de forma prática o entendimento dos conceitos apresentados.
 Este projeto contém algorítmos operações morfológicas nas imagens que são: Dilatação, Erosão, Abertura e Fechamento.
 
+Algumas coisas tem base nesse site https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
+
 ### ⚠Onde foi rodado o software❔
 > Notebook
 >
