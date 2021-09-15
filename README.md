@@ -4,15 +4,15 @@
 
 #### 📽 Projeto Final da disciplina de Processamento de Imagens
 * Professor:
-    Tácito Trindade de Araújo Tiburtino Neves
+    👨‍🏫Tácito Trindade de Araújo Tiburtino Neves
 * Aluno:
-    Franklyn Roberto da Silva
+    👨‍🎓Franklyn Roberto da Silva
 
 ### 🔴Descrição geral do projeto
 O objetivo principal do trabalho é avaliar de forma prática o entendimento dos conceitos apresentados.
 Este projeto contém algorítmos operações morfológicas nas imagens que são: Dilatação, Erosão, Abertura e Fechamento.
 
-Algumas coisas tem base nesse site https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
+Algumas coisas tem base nesse site: https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
 
 ### ⚠Onde foi rodado o software❔
 > Notebook
@@ -50,13 +50,27 @@ Após instalado os pacotes acima, execute o comando abaixo para inicializar o pr
 
 O algorítmos pode demorar um pouco, então aguarde exibir as telas com as imagens processadas.
 
+⚠Obs: Toda implementação está nos respectivos arquivos no GitHub💢
+
 ### 🟠Como funciona o código❔
 >O código permite a escolha de uma imagem como entrada,
 e a saída do algoritmo será o resultado da aplicação das operações de morfologia: dilatação, erosão, abertura e fechamento.
 
+### 🟢O funcionamento❕
+Para realizar as operações de processamento morfológicos, na implementação é necessário ter uma imagem de preferência preto e branco, para obter o contorno dessa imagem de entrada.
+Pois, no arquivo de entrada (Program.py) realiza-se estes pré-requisitos para garantir a execução correta dos algorítmos.
 
+```python
+"""
+Imports omitidos
+"""
 
+imagem_original = cv.cvtColor(io.imread(caminho_imagens + "img01.png"), cv.COLOR_RGBA2GRAY)
+imagem_binaria = binarizar(imagem_original)
 
+img_contornada = gerar_imagem_contornada(imagem_binaria)
+
+```
 
 
 
