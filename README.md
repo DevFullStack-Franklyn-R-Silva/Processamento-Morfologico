@@ -157,17 +157,6 @@ def erosao(imagem, oElementoEstruturante, contornosDeImagem):
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
 Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b> aqui, um elemento de pixel é '1' se pelo menos um pixel sob o kernel for '1'. Portanto, aumenta a região branca na imagem ou o tamanho do objeto em primeiro plano aumenta. Normalmente, em casos como remoção de ruído, a erosão é seguida de dilatação. Porque, a erosão remove ruídos brancos, mas também encolhe nosso objeto. Então, nós dilatamos. Como o ruído acabou, eles não voltarão, mas nossa área de objeto aumenta. Também é útil para juntar partes quebradas de um objeto.
 ```python
 import numpy as np
@@ -200,5 +189,20 @@ def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
         return dilitarAImagem 
 ```
 
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *ABERTURA* </b> aqui na Abertura, é apenas outro nome de erosão seguida de dilatação . É útil na remoção de ruído, conforme explicado acima. 
 
+```python
+import numpy as np
+from ContornaImagem import imagemContornada
+
+
+def abertura(imagem, oElementoEstruturante, contornosDeImagem):
+    copiaDaImagem = np.copy(imagem)
+    imagemComErosao = erosao(copiaDaImagem, oElementoEstruturante, contornosDeImagem)
+    imagemComContornacao = imagemContornada(imagemComErosao)
+    imagemComAbertura = dilatar(imagemComErosao, oElementoEstruturante, imagemComContornacao)
+
+    return imagemComAbertura
+
+```
 
