@@ -130,11 +130,10 @@ from ContornaImagem import imagemContornada
 def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
 
         dilitarAImagem = imagem 
-
-        # O c é uma espécie de correção para não aplicar o elemento estruturante errado
+        # O c aqui é uma espécie de correção para não aplicar o elemento estruturante errado.
         c = int(len(oElementoEstruturante)/2)  
 
-        # Percorre a imagem
+        # Aqui irá percorre a imagem
         for i in range(len(dilitarAImagem)):
             for j in range(len(dilitarAImagem[0])):
 
