@@ -58,7 +58,7 @@ e a saída do algoritmo será o resultado da aplicação das operações de morf
 
 ### 🟢O funcionamento❕
 Para realizar as operações de processamento morfológicos, na implementação é necessário ter uma imagem de preferência preto e branco.
-Pois, no arquivo de entrada (Program.py) realiza-se estes pré-requisitos para garantir a execução correta dos algorítmos.
+Pois, no arquivo de entrada ([Program.py](Program.py)) realiza-se estes pré-requisitos para garantir a execução correta dos algorítmos.
 
 ```python
 
@@ -75,8 +75,53 @@ imagemOriginal = cv.cvtColor(io.imread(caminhoDaImagens + "nomeDaImagem.png"), c
 imagemBinaria = imagemEmBinario(imagemOriginal)
 
 ```
+Aqui exibe a imagem original
 
+```python
+cv.imshow('Imagem Original', imagemBinaria)
+```
 
+Aqui na classe ([Binario.py](Binario.py)), vai deixar a imagem em binário.
+```python
+import numpy as np
+
+# deixa a imagem Binaria
+def imagemEmBinario(image):
+    imagemBinario = np.zeros(image.shape)
+    for i in range(len(image)):
+        for j in range(len(image[0])):
+            if image[i, j] != 0:
+                imagemBinario[i, j] = 255
+    
+    resultado = np.copy(imagemBinario) 
+    
+    return resultado
+ ```
+Aqui na classe ([ContornaImagem.py](ContornaImagem.py)), vai gerar uma imagem contornada.
+```python
+import numpy as np
+from skimage.measure import find_contours
+import cv2 as cv
+
+# gerar uma imagem contornada
+def imagemContornada(imagem):
+    contornosDaImagem = np.zeros(imagem.shape + (3, ), np.uint8)
+
+    contornos = find_contours(imagem, 0)
+
+    for contorno in contornos:
+
+        contorno = contorno.astype(np.int).tolist()
+        
+        # Aqui vai desenhar linhas de contorno
+        for idx, coords in enumerate(contorno[:-1]):
+            y1, x1, y2, x2 = coords + contorno[idx + 1]
+            contornosDaImagem = cv.line(contornosDaImagem, (x1, y1), (x2, y2),(0, 255, 0), 1)
+        
+    contornosDaImagem = contornosDaImagem[:,:,1]
+
+    return contornosDaImagem
+```
 
 
 
