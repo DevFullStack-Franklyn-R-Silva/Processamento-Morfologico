@@ -57,18 +57,22 @@ O algorítmos pode demorar um pouco, então aguarde exibir as telas com as image
 e a saída do algoritmo será o resultado da aplicação das operações de morfologia: dilatação, erosão, abertura e fechamento.
 
 ### 🟢O funcionamento❕
-Para realizar as operações de processamento morfológicos, na implementação é necessário ter uma imagem de preferência preto e branco, para obter o contorno dessa imagem de entrada.
+Para realizar as operações de processamento morfológicos, na implementação é necessário ter uma imagem de preferência preto e branco.
 Pois, no arquivo de entrada (Program.py) realiza-se estes pré-requisitos para garantir a execução correta dos algorítmos.
 
 ```python
-"""
-Imports omitidos
-"""
 
-imagem_original = cv.cvtColor(io.imread(caminho_imagens + "img01.png"), cv.COLOR_RGBA2GRAY)
-imagem_binaria = binarizar(imagem_original)
+import cv2 as cv
+from skimage import io
+from Binario import imagemEmBinario
+from ContornaImagem import imagemContornada
+from operacoes import dilatar, erosao, abertura, fechamento
 
-img_contornada = gerar_imagem_contornada(imagem_binaria)
+caminhoDaImagens = "./imagens/" # Coloque aqui o caminho da imagem, é necessário ter uma imagem preto e branco, 
+                                # para obter o contorno dessa imagem de entrada.
+
+imagemOriginal = cv.cvtColor(io.imread(caminhoDaImagens + "nomeDaImagem.png"), cv.COLOR_RGBA2GRAY)
+imagemBinaria = imagemEmBinario(imagemOriginal)
 
 ```
 
