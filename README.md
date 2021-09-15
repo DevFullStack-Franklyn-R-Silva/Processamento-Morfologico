@@ -218,3 +218,31 @@ def fechamento(imagem, oElementoEstruturante, contornosDeImagem):
 
     return imagemComFechamento
 ```
+Voltando ao programa principal ([Program.py](Program.py)), o elemento estruturante se dá pela ferramenta do open-cv.
+
+```python
+oElementoEstruturante = cv.getStructuringElement(cv.MORPH_ELLIPSE, (15,15))
+```
+Que é possível definir as dimensões do mesmo na tupla para que a depender da imagem obtenha-se um melhor resultado.
+
+Aqui abaixo, são as chamadas dos metódos.
+
+```python
+# OPERAÇÕES DE EROSÃO E DILATAÇÃO
+img_erodida = erosao(imagemBinaria, oElementoEstruturante, imagemComContorno)
+cv.imshow('Imagem Erosão', img_erodida)
+
+img_dilatada = dilatar(imagemBinaria, oElementoEstruturante, imagemComContorno)
+cv.imshow('Imagem Dilatada', img_dilatada)
+
+
+# OPERAÇÕES ABERTURA E FECHAMENTO
+
+imagemComAbertura = abertura(imagemBinaria, oElementoEstruturante, imagemComContorno)
+cv.imshow('Imagem Abertura', imagemComAbertura)
+
+imagemComFechamento = fechamento(imagemBinaria, oElementoEstruturante, imagemComContorno)
+cv.imshow('Imagem Fechamento', imagemComFechamento)
+
+cv.waitKey(0)
+```
