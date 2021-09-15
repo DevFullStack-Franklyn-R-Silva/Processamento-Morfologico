@@ -157,7 +157,7 @@ def erosao(imagem, oElementoEstruturante, contornosDeImagem):
 ```
 
 
-Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b> aqui, um elemento de pixel é '1' se pelo menos um pixel sob o kernel for '1'. Portanto, aumenta a região branca na imagem ou o tamanho do objeto em primeiro plano aumenta. Normalmente, em casos como remoção de ruído, a erosão é seguida de dilatação. Porque, a erosão remove ruídos brancos, mas também encolhe nosso objeto. Então, nós dilatamos. Como o ruído acabou, eles não voltarão, mas nossa área de objeto aumenta. Também é útil para juntar partes quebradas de um objeto.
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b>, aqui um elemento de pixel é '1' se pelo menos um pixel sob o kernel for '1'. Portanto, aumenta a região branca na imagem ou o tamanho do objeto em primeiro plano aumenta. Normalmente, em casos como remoção de ruído, a erosão é seguida de dilatação. Porque, a erosão remove ruídos brancos, mas também encolhe nosso objeto. Então, nós dilatamos. Como o ruído acabou, eles não voltarão, mas nossa área de objeto aumenta. Também é útil para juntar partes quebradas de um objeto.
 ```python
 import numpy as np
 from ContornaImagem import imagemContornada
@@ -189,7 +189,7 @@ def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
         return dilitarAImagem 
 ```
 
-Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *ABERTURA* </b> aqui na Abertura, é apenas outro nome de erosão seguida de dilatação . É útil na remoção de ruído, conforme explicado acima. 
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *ABERTURA* </b>, aqui na Abertura, é apenas outro nome de erosão seguida de dilatação . É útil na remoção de ruído, conforme explicado acima. 
 
 ```python
 import numpy as np
@@ -205,4 +205,16 @@ def abertura(imagem, oElementoEstruturante, contornosDeImagem):
     return imagemComAbertura
 
 ```
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *FECHAMENTO* </b>, o Fechamento é o reverso da abertura, dilatação seguida por erosão . É útil para fechar pequenos orifícios dentro dos objetos em primeiro plano ou pequenos pontos pretos no objeto.
+```python
+import numpy as np
+from ContornaImagem import imagemContornada
 
+def fechamento(imagem, oElementoEstruturante, contornosDeImagem):
+    copiaDaImagem = np.copy(imagem)
+    imagemComdilatacao = dilatar(copiaDaImagem, oElementoEstruturante, contornosDeImagem)
+    imagemComContornacao = imagemContornada(imagemComdilatacao)
+    imagemComFechamento = erosao(imagemComdilatacao, oElementoEstruturante, imagemComContornacao)
+
+    return imagemComFechamento
+```
