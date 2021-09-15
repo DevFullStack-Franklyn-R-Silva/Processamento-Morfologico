@@ -66,7 +66,7 @@ import cv2 as cv
 from skimage import io
 from Binario import imagemEmBinario
 from ContornaImagem import imagemContornada
-from operacoes import dilatar, erosao, abertura, fechamento
+from OperacoesMorfologicas import dilatar, erosao, abertura, fechamento
 
 caminhoDaImagens = "./imagens/" # Coloque aqui o caminho da imagem, é necessário ter uma imagem preto e branco, 
                                 # para obter o contorno dessa imagem de entrada.
@@ -75,7 +75,7 @@ imagemOriginal = cv.cvtColor(io.imread(caminhoDaImagens + "nomeDaImagem.png"), c
 imagemBinaria = imagemEmBinario(imagemOriginal)
 
 ```
-Aqui exibe a imagem original
+Aqui exibe a imagem original nesse método.
 
 ```python
 cv.imshow('Imagem Original', imagemBinaria)
@@ -122,7 +122,38 @@ def imagemContornada(imagem):
 
     return contornosDaImagem
 ```
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b> aqui, um elemento de pixel é '1' se pelo menos um pixel sob o kernel for '1'. Portanto, aumenta a região branca na imagem ou o tamanho do objeto em primeiro plano aumenta. Normalmente, em casos como remoção de ruído, a erosão é seguida de dilatação. Porque, a erosão remove ruídos brancos, mas também encolhe nosso objeto. Então, nós dilatamos. Como o ruído acabou, eles não voltarão, mas nossa área de objeto aumenta. Também é útil para juntar partes quebradas de um objeto.
+```python
+import numpy as np
+from ContornaImagem import imagemContornada
 
+def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
+
+        dilitarAImagem = imagem 
+
+        # O c é uma espécie de correção para não aplicar o elemento estruturante errado
+        c = int(len(oElementoEstruturante)/2)  
+
+        # Percorre a imagem
+        for i in range(len(dilitarAImagem)):
+            for j in range(len(dilitarAImagem[0])):
+
+                #Se for uma borda, aplica-se logo mais o elemento estruturante com o pixel branco, por exemplo (255)
+                if contornosDeImagem[i, j] == 255:
+
+                    for k in range(len(oElementoEstruturante)):
+                        for l in range(len(oElementoEstruturante[0])):
+
+                            # Confere se o elemento estruturante está contido na matriz
+                            if oElementoEstruturante[k, l] != 0:
+                                try:
+                                    # Aplicando a transformação - neste caso pintando de branco (dilatando). 
+                                    dilitarAImagem[i + k - c, j + k - c] = 255
+                                except:
+                                    pass
+
+        return dilitarAImagem 
+```
 
 
 
