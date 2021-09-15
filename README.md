@@ -122,6 +122,52 @@ def imagemContornada(imagem):
 
     return contornosDaImagem
 ```
+
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b>, a ideia básica de erosão é apenas como a erosão do solo, ela desgasta os limites do objeto em primeiro plano (sempre tente manter o primeiro plano em branco). Então, o que isso faz? O kernel desliza pela imagem (como na convolução 2D). Um pixel na imagem original (1 ou 0) será considerado 1 apenas se todos os pixels sob o kernel forem 1, caso contrário, ele é corroído (reduzido a zero).
+
+Então o que acontece é que todos os pixels próximos ao limite serão descartados dependendo do tamanho do kernel. Assim, a espessura ou o tamanho do objeto em primeiro plano diminui ou simplesmente a região branca diminui na imagem. É útil para remover pequenos ruídos brancos, destacar dois objetos conectados, etc.
+```python
+import numpy as np
+from ContornaImagem import imagemContornada
+
+def erosao(imagem, oElementoEstruturante, contornosDeImagem):
+
+    imagemQueIrarTerErosao = imagem
+    # correção é para não aplicar o elemento estruturante errado.
+    correcao = int(len(oElementoEstruturante)/2)
+
+    # Aqui irá percorre a imagem
+    for i in range(len(imagemQueIrarTerErosao)):
+        for j in range(len(imagemQueIrarTerErosao[0])):
+
+            #Se for uma borda, aplica-se logo mais o elemento estruturante com o pixel branco, por exemplo (255)
+            if contornosDeImagem[i, j] == 255:
+
+                for k in range(len(oElementoEstruturante)):
+                    for l in range(len(oElementoEstruturante[0])):
+
+                         # Confere se o elemento estruturante está contido na matriz
+                        if oElementoEstruturante[k, l] != 0:
+                            try:
+                                # Aplicando a transformação - neste caso fazendo a erosão (desgastando). 
+                                imagemQueIrarTerErosao[i + k - correcao, j + k - correcao] = 0
+                            except:
+                                pass
+    return imagemQueIrarTerErosao
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b> aqui, um elemento de pixel é '1' se pelo menos um pixel sob o kernel for '1'. Portanto, aumenta a região branca na imagem ou o tamanho do objeto em primeiro plano aumenta. Normalmente, em casos como remoção de ruído, a erosão é seguida de dilatação. Porque, a erosão remove ruídos brancos, mas também encolhe nosso objeto. Então, nós dilatamos. Como o ruído acabou, eles não voltarão, mas nossa área de objeto aumenta. Também é útil para juntar partes quebradas de um objeto.
 ```python
 import numpy as np
@@ -130,8 +176,8 @@ from ContornaImagem import imagemContornada
 def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
 
         dilitarAImagem = imagem 
-        # O c aqui é uma espécie de correção para não aplicar o elemento estruturante errado.
-        c = int(len(oElementoEstruturante)/2)  
+        # correção é para não aplicar o elemento estruturante errado.
+        correcao = int(len(oElementoEstruturante)/2)  
 
         # Aqui irá percorre a imagem
         for i in range(len(dilitarAImagem)):
@@ -147,7 +193,7 @@ def dilatar(imagem, oElementoEstruturante, contornosDeImagem):
                             if oElementoEstruturante[k, l] != 0:
                                 try:
                                     # Aplicando a transformação - neste caso pintando de branco (dilatando). 
-                                    dilitarAImagem[i + k - c, j + k - c] = 255
+                                    dilitarAImagem[i + k - correcao, j + k - correcao] = 255
                                 except:
                                     pass
 
