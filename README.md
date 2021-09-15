@@ -123,7 +123,7 @@ def imagemContornada(imagem):
     return contornosDaImagem
 ```
 
-Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *DILATAÇÃO* </b>, a ideia básica de erosão é apenas como a erosão do solo, ela desgasta os limites do objeto em primeiro plano (sempre tente manter o primeiro plano em branco). Então, o que isso faz? O kernel desliza pela imagem (como na convolução 2D). Um pixel na imagem original (1 ou 0) será considerado 1 apenas se todos os pixels sob o kernel forem 1, caso contrário, ele é corroído (reduzido a zero).
+Aqui na classe ([OperacoesMorfologicas.py](OperacoesMorfologicas.py)), no método <b> *EROSÃO* </b>, a ideia básica de erosão é apenas como a erosão do solo, ela desgasta os limites do objeto em primeiro plano (sempre tente manter o primeiro plano em branco). Então, o que isso faz? O kernel desliza pela imagem (como na convolução 2D). Um pixel na imagem original (1 ou 0) será considerado 1 apenas se todos os pixels sob o kernel forem 1, caso contrário, ele é corroído (reduzido a zero).
 
 Então o que acontece é que todos os pixels próximos ao limite serão descartados dependendo do tamanho do kernel. Assim, a espessura ou o tamanho do objeto em primeiro plano diminui ou simplesmente a região branca diminui na imagem. É útil para remover pequenos ruídos brancos, destacar dois objetos conectados, etc.
 ```python
