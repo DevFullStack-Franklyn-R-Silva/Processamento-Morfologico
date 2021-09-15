@@ -246,3 +246,4 @@ cv.imshow('Imagem Fechamento', imagemComFechamento)
 
 cv.waitKey(0)
 ```
+### 🔵Resultados❕
