@@ -14,7 +14,7 @@ Este projeto contém algorítmos operações morfológicas nas imagens que são:
 
 Algumas coisas tem base nesse site: https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
 
-### ⚠Onde foi rodado o software❔
+### ⚠Onde foi rodado o algoritimo❔
 > Notebook
 >
 > Windows 10 Home, Versão: 21H1
