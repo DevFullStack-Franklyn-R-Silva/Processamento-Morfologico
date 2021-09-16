@@ -12,7 +12,7 @@
 O objetivo principal do trabalho é avaliar de forma prática o entendimento dos conceitos apresentados.
 Este projeto contém algorítmos operações morfológicas nas imagens que são: Dilatação, Erosão, Abertura e Fechamento.
 
-Algumas coisas tem base nesse site: https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
+
 
 ### ⚠Onde foi rodado o algoritimo❔
 > Notebook
@@ -271,7 +271,7 @@ cv.imshow('Imagem Fechamento', imagemComFechamento)
 
 cv.waitKey(0)
 ```
-### 🔵Resultados❕
+## 🔵Resultados❕
 
 <p align="left">
     Fiz uma imagem usando Paint do Windows 10 e salvei como ImagemOriginal.png
@@ -298,3 +298,16 @@ E o resultado de cada operação de transformações morfológicas, foi essas:
     <h3 align="left"> Fechamento: </h3>
     <img align="center" alt="GIF" src="./Resultados/fechamento.png" width="500" height="400" />
 </p>
+
+## 📚Referências
+Online <16/09/2021> https://medium.com/turing-talks/detec%C3%A7%C3%A3o-de-bordas-e-transforma%C3%A7%C3%B5es-morfol%C3%B3gicas-em-imagens-com-opencv-8aecf8c8ba2f#:~:text=Opera%C3%A7%C3%B5es%20morfol%C3%B3gicas%20s%C3%A3o%20uma%20classe,ap%C3%B3s%20a%20extra%C3%A7%C3%A3o%20de%20bordas.
+
+Online <16/09/2021> https://docs.opencv.org/master/d9/d61/tutorial_py_morphological_ops.html
+
+Online <16/09/2021> https://opencv.org/
+
+Online <16/09/2021> https://www.inf.ufpr.br/lesoliveira/download/morfologia.pdf
+
+Online <16/09/2021> https://edisciplinas.usp.br/pluginfile.php/1364034/mod_resource/content/1/Representa%C3%A7%C3%A3oCor.pdf
+
+Online <16/09/2021> https://edisciplinas.usp.br/pluginfile.php/5832847/mod_resource/content/14/Aula%209%20-%20Extracao%20de%20Caracteristicas.pdf
