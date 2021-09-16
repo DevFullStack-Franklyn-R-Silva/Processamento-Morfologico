@@ -272,7 +272,29 @@ cv.imshow('Imagem Fechamento', imagemComFechamento)
 cv.waitKey(0)
 ```
 ### 🔵Resultados❕
-Fiz uma imagem usando Paint do Windows 10 e salvei como ImagemOriginal.png
-<p align="center">
+
+<p align="left">
+    Fiz uma imagem usando Paint do Windows 10 e salvei como ImagemOriginal.png
+    <img align="center" alt="GIF" src="./Resultados/paint.png" width="100" height="100" />
+</p>
+<h3 align="left"> Desenhei isso aqui ⤵ </h3>
+<p align="left">
     <img align="center" alt="GIF" src="./Resultados/imagemOriginal.png" width="400" height="300" />
+</p>
+E o resultado de cada operação de transformações morfológicas, foi essas:
+<p align="left">
+    <h3 align="left"> Erosão: </h3>
+    <img align="center" alt="GIF" src="./Resultados/erosao.png" width="500" height="400" />
+</p>
+<p align="left">
+    <h3 align="left"> Dilatação: </h3>
+    <img align="center" alt="GIF" src="./Resultados/dilatacao.png" width="500" height="400" />
+</p>
+<p align="left">
+    <h3 align="left"> Abertura: </h3>
+    <img align="center" alt="GIF" src="./Resultados/abertura.png" width="500" height="400" />
+</p>
+<p align="left">
+    <h3 align="left"> Fechamento: </h3>
+    <img align="center" alt="GIF" src="./Resultados/fechamento.png" width="500" height="400" />
 </p>
