@@ -1,3 +1,7 @@
+[![Alt text](https://img.youtube.com/vi/qOM-rsbVEQo/0.jpg)](https://www.youtube.com/watch?v=qOM-rsbVEQo)
+
+Click na imagem para ser redirecionado para vídeo no Youtube ✔
+
 # Processamento Morfológico
 
 #### 🏫 Universidade Federal de Alagoas - UFAL *Ciência da Computação* - *Campus. Arapiraca*.
